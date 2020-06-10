@@ -30,18 +30,18 @@ static_resources:
                   prefix_rewrite: "/"
               - match:
                   path: "/"
-                    headers:
-                      name: "x-route-to"
-                      exact_match: "service2"
-                  route:
-                    cluster: service2
+                  headers:
+                    name: "x-route-to"
+                    exact_match: "service2"
+                route:
+                  cluster: service2
               - match:
                   path: "/"
-                    headers:
-                      name: "x-route-to"
-                      exact_match: "service1"
-                  route:
-                    cluster: service1
+                  headers:
+                    name: "x-route-to"
+                    exact_match: "service1"
+                route:
+                  cluster: service1
           http_filters:
           - name: envoy.router
             typed_config: {}
@@ -50,13 +50,13 @@ static_resources:
     connect_timeout: 1s
     type: static
     lb_policy: round_robin
-    health-check:
-      timeout: 1s
-      interval: 10s
-      unhealthy-treshhold: 3
-      healthy-treshhold: 3
-      http_health_check:
-        path: "/"
+#    health-check:
+#      timeout: 1s
+#      interval: 10s
+#      unhealthy-treshhold: 3
+#      healthy-treshhold: 3
+#      http_health_check:
+#        path: "/"
     load_assignment:
       cluster_name: service1
       endpoints:
@@ -70,13 +70,13 @@ static_resources:
     connect_timeout: 1s
     type: static
     lb_policy: round_robin
-    health-check:
-      timeout: 1s
-      interval: 10s
-      unhealthy-treshhold: 3
-      healthy-treshhold: 3
-      http_health_check:
-        path: "/"
+#    health-check:
+#      timeout: 1s
+#      interval: 10s
+#      unhealthy-treshhold: 3
+#      healthy-treshhold: 3
+#      http_health_check:
+#        path: "/"
     load_assignment:
       cluster_name: service2
       endpoints:
