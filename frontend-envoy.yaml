@@ -50,13 +50,14 @@ static_resources:
     connect_timeout: 1s
     type: static
     lb_policy: round_robin
-#    health-check:
-#      timeout: 1s
-#      interval: 10s
-#      unhealthy-treshhold: 3
-#      healthy-treshhold: 3
-#      http_health_check:
-#        path: "/"
+    health_checks:
+      - timeout: 1s
+        interval: 60s
+        interval_jitter: 1s
+        unhealthy_threshold: 3
+        healthy_threshold: 3
+        http_health_check:
+          path: "/"
     load_assignment:
       cluster_name: service1
       endpoints:
@@ -70,13 +71,14 @@ static_resources:
     connect_timeout: 1s
     type: static
     lb_policy: round_robin
-#    health-check:
-#      timeout: 1s
-#      interval: 10s
-#      unhealthy-treshhold: 3
-#      healthy-treshhold: 3
-#      http_health_check:
-#        path: "/"
+    health_checks:
+      - timeout: 1s
+        interval: 60s
+        interval_jitter: 1s
+        unhealthy_threshold: 3
+        healthy_threshold: 3
+        http_health_check:
+          path: "/"
     load_assignment:
       cluster_name: service2
       endpoints:
