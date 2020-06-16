@@ -1,0 +1,2 @@
+aiohttp==3.6.2
+aiohttp-requests==0.1.3

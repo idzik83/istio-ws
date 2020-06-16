@@ -1,0 +1,31 @@
+.idea
+
+# System Files
+.DS_Store
+Thumbs.db
+
+__pycache__/
+*.py[cod]
+*$py.class
+MANIFEST
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+make-log.txt
+
+# pyenv
+.python-version
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# pytest
+.pytest_cache/
+
+# coverage
+.coverage
