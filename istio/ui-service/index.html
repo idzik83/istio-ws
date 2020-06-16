@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>UI Service</h1>
+        <h3>Hello from UI Service</h3>
+        <p id="quote"></p>
+        <script>
+            $.ajax({
+            type: "GET",
+            url: 'http://quote-service',
+            dataType:"json",
+            success: function(response){
+                $( "#quote" ).empty().append(response['text']);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(jqXHR.status);
+                alert(textStatus);
+                alert(errorThrown);
+            }
+          });
+        </script>
+    </body>
+</html>
