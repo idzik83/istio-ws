@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  ui-service:
+    build:
+      context: ui-service
+    image: idzik/istio-ui-service
+    ports:
+    - "80:80"
+    networks:
+      - quoteservice
+  quote-service:
+    build:
+      context: quote-service
+    image: idzik/istio-quote-service
+    ports:
+    - "8080:8080"
+    networks:
+      - quoteservice
+
+networks:
+  quoteservice: {}
