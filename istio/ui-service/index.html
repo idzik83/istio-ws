@@ -11,15 +11,13 @@
         <script>
             $.ajax({
             type: "GET",
-            url: 'http://quote-service:8080/api/quote/',
+            url: '/api/quote/',
             dataType:"json",
             success: function(response){
                 $( "#quote" ).empty().append(response['text']);
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert(jqXHR.status);
-                alert(textStatus);
-                alert(errorThrown);
+                console.error('Something wrong: ', errorThrown, textStatus)
             }
           });
         </script>
