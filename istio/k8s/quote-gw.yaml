@@ -1,0 +1,41 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: quote-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ui-service-default
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - quote-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /api/quote
+      route:
+        - destination:
+            host: quote-service
+            port:
+              number: 8080
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: ui-service
+            port:
+              number: 80
