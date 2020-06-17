@@ -11,7 +11,7 @@
         <script>
             $.ajax({
             type: "GET",
-            url: 'http://quote-service',
+            url: 'http://quote-service/api/quote/',
             dataType:"json",
             success: function(response){
                 $( "#quote" ).empty().append(response['text']);
