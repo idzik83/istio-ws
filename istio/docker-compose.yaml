@@ -5,8 +5,11 @@ services:
     build:
       context: ui-service
     image: idzik/istio-ui-service
+    volumes:
+      - ./ui-service/nginx-local.conf:/etc/nginx/conf.d/nginx.conf
+      - ./ui-service/index.html:/var/www/index.html
     ports:
-    - "80:80"
+      - "80:80"
     networks:
       - quoteservice
   quote-service:

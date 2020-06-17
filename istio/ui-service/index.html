@@ -3,23 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    </head>
-    <body>
-        <h1>UI Service</h1>
-        <h3>Hello from UI Service</h3>
-        <p id="quote"></p>
         <script>
             $.ajax({
-            type: "GET",
-            url: '/api/quote/',
-            dataType:"json",
-            success: function(response){
-                $( "#quote" ).empty().append(response['text']);
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.error('Something wrong: ', errorThrown, textStatus)
-            }
-          });
+                type: "GET",
+                url: '/api/quote/',
+                dataType:"json",
+                success: function(response){
+                    console.log(response);
+                    $("#quote").empty().append(response['quote']);
+                    $("#author").empty().append(response['author']);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('Something wrong: ', errorThrown, textStatus)
+                }
+            });
         </script>
+    </head>
+    <body>
+    <h1>UI Service</h1>
+        <h3>Hello from UI Service</h3>
+        <blockquote id="quote"></blockquote>
+        <p id="author"></p>
     </body>
 </html>

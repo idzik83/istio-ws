@@ -12,4 +12,5 @@ async def get_random_quote(request):
     response = await requests.get(QUOTE_SERVER_URL)
     quotes = await response.json()
     rand_quote_idx = random.randrange(len(quotes))
-    return web.json_response({'quote': quotes[rand_quote_idx]['text']}, headers={'Access-Control-Allow-Origin': '*'})
+    quote = quotes[rand_quote_idx]
+    return web.json_response({'quote': quote['text'], 'author': quote['author']})
