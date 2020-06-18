@@ -1,0 +1,58 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ui-service-default
+  namespace: istio-ws
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - quote-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /api/quote
+          headers:
+            x-request-user:
+              exact: "true"
+      route:
+        - destination:
+            host: quote-service
+            subset: v2
+            port:
+              number: 8080
+    - match:
+        - uri:
+            prefix: /api/quote
+      route:
+        - destination:
+            host: quote-service
+            subset: v1
+            port:
+              number: 8080
+    - match:
+      - uri:
+          prefix: /
+        headers:
+          x-request-user:
+            exact: "true"
+      route:
+        - destination:
+            host: ui-service
+            subset: v2
+            port:
+              number: 80
+      fault:
+        delay:
+          fixedDelay: 1s
+          percentage:
+            value: 100
+    - match:
+      - uri:
+          prefix: /
+      route:
+        - destination:
+            host: ui-service
+            subset: v1
+            port:
+              number: 80
