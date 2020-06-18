@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: ui-service
-        image: idzik/istio-ui-service:latest
+        image: idzik/istio-ui-service:v1
         imagePullPolicy: Always
         ports:
         - name: http

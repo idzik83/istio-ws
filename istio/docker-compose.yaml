@@ -4,7 +4,7 @@ services:
   ui-service:
     build:
       context: ui-service
-    image: idzik/istio-ui-service:latest
+    image: idzik/istio-ui-service:v1
     volumes:
       - ./ui-service/nginx-local.conf:/etc/nginx/conf.d/nginx.conf
       - ./ui-service/index.html:/var/www/index.html
@@ -15,7 +15,7 @@ services:
   quote-service:
     build:
       context: quote-service
-    image: idzik/istio-quote-service:latest
+    image: idzik/istio-quote-service:v1
     ports:
     - "8080:8080"
     networks:
