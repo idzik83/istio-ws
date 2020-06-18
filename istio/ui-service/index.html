@@ -12,6 +12,11 @@
                     console.log(response);
                     $("#quote").empty().append(response['quote']);
                     $("#author").empty().append(response['author']);
+                    let authorImage = response['image']
+                    if (!authorImage) {
+                        authorImage = '/static/default.jpg'
+                    }
+                    $('.author img').attr('src', authorImage);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.error('Something wrong: ', errorThrown, textStatus)
@@ -24,5 +29,8 @@
         <h3>Hello from UI Service</h3>
         <blockquote id="quote"></blockquote>
         <p id="author"></p>
+        <div class="author">
+            <img src="" alt="Author's image" width="200">
+        </div>
     </body>
 </html>
