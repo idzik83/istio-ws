@@ -30,6 +30,11 @@ spec:
             subset: v1
             port:
               number: 8080
+      fault:
+        abort:
+          httpStatus: 500
+          percentage:
+            value: 20
     - match:
       - uri:
           prefix: /
@@ -42,11 +47,6 @@ spec:
             subset: v2
             port:
               number: 80
-      fault:
-        delay:
-          fixedDelay: 1s
-          percentage:
-            value: 100
     - match:
       - uri:
           prefix: /
