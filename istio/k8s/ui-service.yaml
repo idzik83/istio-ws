@@ -18,6 +18,8 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    sidecar.istio.io/extraStatTags: destination_port,request_host
   name: ui-service
   labels:
     app: ui-service
@@ -46,6 +48,8 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    sidecar.istio.io/extraStatTags: destination_port,request_host
   name: ui-service-v2
   labels:
     app: ui-service

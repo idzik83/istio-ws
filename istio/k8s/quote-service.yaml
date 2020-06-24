@@ -18,6 +18,8 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    sidecar.istio.io/extraStatTags: destination_port,request_host
   name: quote-service
   labels:
     app: quote-service
@@ -47,6 +49,8 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    sidecar.istio.io/extraStatTags: destination_port,request_host
   name: quote-service-v2
   labels:
     app: quote-service
