@@ -6,7 +6,7 @@ metadata:
 spec:
   workloadSelector:
     labels:
-      app: reviews
+      app: ui-service
   configPatches:
   - applyTo: HTTP_FILTER
     match:
@@ -32,39 +32,25 @@ spec:
                 {
                   "attributes": [
                     {
-                      "output_attribute": "istio_responseClass",
+                      "output_attribute": "istio_operationId",
                       "match": [
                         {
-                          "value": "2xx",
-                          "condition": "response.code >= 200 && response.code <= 299"
+                          "value": "Root",
+                          "condition": "request.url_path == '/' && request.method == 'GET'"
                         },
                         {
-                          "value": "3xx",
-                          "condition": "response.code >= 300 && response.code <= 399"
+                          "value": "Css",
+                          "condition": "request.url_path.matches('^*css$') && request.method == 'GET'"
                         },
                         {
-                          "value": "404",
-                          "condition": "response.code == 404"
+                          "value": "Ico",
+                          "condition": "request.url_path.matches('^*ico$') && request.method == 'GET'"
                         },
                         {
-                          "value": "429",
-                          "condition": "response.code == 429"
-                        },
-                        {
-                          "value": "503",
-                          "condition": "response.code == 503"
-                        },
-                        {
-                          "value": "5xx",
-                          "condition": "response.code >= 500 && response.code <= 599"
-                        },
-                        {
-                          "value": "4xx",
-                          "condition": "response.code >= 400 && response.code <= 499"
+                          "value": "Jpg",
+                          "condition": "request.url_path.matches('^*jpg$') && request.method == 'GET'"
                         }
                       ]
-                    }
-                  ]
                     }
                   ]
                 }

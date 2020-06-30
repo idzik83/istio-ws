@@ -19,7 +19,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    sidecar.istio.io/extraStatTags: destination_port,request_host
+    sidecar.istio.io/extraStatTags: response_path
   name: ui-service
   labels:
     app: ui-service
@@ -49,7 +49,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    sidecar.istio.io/extraStatTags: destination_port,request_host
+    sidecar.istio.io/extraStatTags: response_path
   name: ui-service-v2
   labels:
     app: ui-service
